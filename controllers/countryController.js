@@ -20,9 +20,8 @@ exports.index = function (req, res) {
 exports.new = function (req, res) {
     var country = new Country();
     country.name = req.body.name ? req.body.name : country.name;
-    country.gender = req.body.gender;
-    country.email = req.body.email;
-    country.phone = req.body.phone;
+    country.stats = req.body.stats;
+    country.polyglonCoordinates = req.body.polyglonCoordinates;
 // save the country and check for errors
     country.save(function (err) {
         // if (err)
@@ -35,45 +34,44 @@ res.json({
 };
 // Handle view country info
 exports.view = function (req, res) {
-    Expense.findById(req.params.expense_id, function (err, expense) {
+    Country.findById(req.params.country_id, function (err, country) {
         if (err)
             res.send(err);
         res.json({
-            message: 'expense details loading..',
-            data: expense
+            message: 'country details loading..',
+            data: country
         });
     });
 };
-// Handle update expense info
+// Handle update country info
 exports.update = function (req, res) {
-Expense.findById(req.params.expense_id, function (err, expense) {
+Country.findById(req.params.country_id, function (err, country) {
         if (err)
             res.send(err);
-        expense.name = req.body.name ? req.body.name : expense.name;
-        expense.gender = req.body.gender;
-        expense.email = req.body.email;
-        expense.phone = req.body.phone;
-// save the expense and check for errors
-        expense.save(function (err) {
+        country.name = req.body.name ? req.body.name : country.name;
+        country.stats = req.body.stats;
+        country.polyglonCoordinates = req.body.polyglonCoordinates;
+// save the country and check for errors
+        country.save(function (err) {
             if (err)
                 res.json(err);
             res.json({
-                message: 'expense Info updated',
-                data: expense
+                message: 'country Info updated',
+                data: country
             });
         });
     });
 };
-// Handle delete expense
+// Handle delete country
 exports.delete = function (req, res) {
-    Expense.remove({
-        _id: req.params.expense_id
-    }, function (err, expense) {
+    Country.remove({
+        _id: req.params.country_id
+    }, function (err, country) {
         if (err)
             res.send(err);
 res.json({
             status: "success",
-            message: 'expense deleted'
+            message: 'country deleted'
         });
     });
 };
