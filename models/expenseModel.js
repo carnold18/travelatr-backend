@@ -1,20 +1,20 @@
 var mongoose = require('mongoose');
 // Setup schema
-var userSchema = mongoose.Schema({
-    name: {
+var expenseSchema = mongoose.Schema({
+    userId: {
         type: String,
         required: true
     },
-    email: {
+    countryId: {
         type: String,
         required: true
     },
-    age: {
+    expenseType: {
+        type: String,
+        required: true
+    },
+    value: {
         type: Number,
-        required: true
-    },
-    password: {
-        type: String,
         required: true
     },
     createDate: {
@@ -22,8 +22,8 @@ var userSchema = mongoose.Schema({
         default: Date.now
     }
 });
-// Export User model
-var User = module.exports = mongoose.model('user', userSchema);
+// Export Expense model
+var Expense = module.exports = mongoose.model('expense', expenseSchema);
 module.exports.get = function (callback, limit) {
-    User.find(callback).limit(limit);
+    Expense.find(callback).limit(limit);
 }
