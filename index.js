@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://127.0.0.1/resthub', { useNewUrlParser: true})
+mongoose.connect('mongodb://127.0.0.1/travelatr-backend', { useNewUrlParser: true})
 
     // .then(() => {
     // console.log("Connected to Database");
@@ -42,5 +42,5 @@ app.get('/', (req, res) => res.send('Travelat\'r App!'));
 app.use('/api', apiRoutes);
 // Launch app to listen to specified port
 app.listen(port, function () {
-    console.log("Running RestHub on port " + port);
+    console.log("Running travelatr-backend on port " + port);
 });
