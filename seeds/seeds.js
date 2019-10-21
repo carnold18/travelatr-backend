@@ -1,4 +1,4 @@
-// Seeds File
+// Seeds File 
 
 Country = require("../models/countryModel.js");
 Expense = require("../models/expenseModel.js");
@@ -10,7 +10,24 @@ var expenses = require("./expenseData.json");
 //     console.log(expenses["expenses"][i]["Value"]);
 // }
 
-let country = new Country();
-country.name = expenses["expenses"][0]["Name"];
-country.save;
-console.log(country);
+// let country = new Country();
+// console.log(country);
+
+// let expense = new Expense();
+// console.log(expense);
+
+// let user = new User();
+// console.log(user);
+
+function createUserExpenses(expenses) {
+    console.log(expenses["expenses"][0]);
+    let user = new User();
+    user.username = "carnie";
+    user.email = "carnie@example.com";
+    user.password = "password";
+    user.age = 25;
+    user.save();
+    console.log(user);
+}
+
+createUserExpenses(expenses);
