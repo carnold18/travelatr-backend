@@ -44,3 +44,5 @@ app.use('/api', apiRoutes);
 app.listen(port, function () {
     console.log("Running travelatr on port " + port);
 });
+
+// Added this final line to test Git Permissions
